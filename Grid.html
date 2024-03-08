@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid flex</title>
+    <style>
+        .container{
+            display: grid;
+            /* grid-template-columns: [first] 100px [line2] 110px [line3] 100px [col4-start] 110px [five] 100px [end]; */
+            /* grid-template-rows: [row1-start] 60% [row1-end row1-start] 60% [row2-end]; */
+            grid-template-columns:repeat(4, 1fr);
+            grid-template-rows: masonry;
+            /* grid-template-rows: repeat(1,70px); */
+            /* grid-template-rows: auto; */
+            /* grid-template-columns: 1fr 50px 1fr 1fr; */
+            /* grid-template-areas: 
+                "header header header header"
+                "main main . sidebar"
+                "footer footer footer footer"; */
+            /* justify-items: end; */
+            /* grid-template:
+                [row1-start] "header header header" 70px [row1-end]
+                [row2-start] "footer footer footer" 70px [row2-end]
+                / auto 50px auto; */
+            gap:10px;
+        }
+        .item{
+            width:60px;
+            height:60px;
+            border: 1px solid black;
+            border-radius: 10px;
+            display: grid;
+            place-content: center;
+        }
+        .xcontainer>div:nth-child(1){
+            height: 100%;
+            width: 100%;
+            /* grid-column-start: 1;
+            grid-column-end:3;
+            grid-row-start: 1;
+            grid-row-end:7; */
+            /* grid-column-start: 2;
+            grid-column-end: span 4;
+            grid-row-start: 1;
+            grid-row-end: span 2; */
+
+            grid-column: 2/span 4;
+            grid-row:1/span 3;
+        }
+        .xcontainer>div:nth-child(6){
+            align-self: center;
+        }
+        .item-a {
+            grid-area: header;
+            /* width: 100%; */
+            /* justify-self: start; */
+        }
+        .item-b {
+            grid-area: main;
+        }
+        .item-c {
+            grid-area: sidebar;
+        }
+        .item-d {
+            grid-area: footer;
+        }
+
+        .parent-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+}
+.grid-item {
+  grid-column: 2 / 7;
+
+  display: grid;
+  grid-template-columns: subgrid;
+}
+.child-of-grid-item {
+  /* gets to participate on parent grid! */
+  grid-column: 3 / 6;
+}
+    </style>
+</head>
+<body>
+     <div class="container">
+        <div class="item">One</div>
+        <div class="item">Two</div>
+        <div class="item">Three</div>
+        <div class="item">Four</div>
+        <div class="item">Five</div>
+        <div class="item">Six</div>
+        <div class="item">Seven</div>
+        <div class="item">Eight</div>
+        <div class="item">Nine</div>
+        <div class="item">Ten</div>
+        <div class="item">Eleven</div>
+        <div class="item">Twelve</div>
+    <!-- </div> -->
+    <div class="grid-parent">
+
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+      
+        <ul style="display: contents;">
+          <!-- These grid-items get to participate on 
+               the same grid!-->
+          <li class="grid-item"></li>
+          <li class="grid-item"></li>
+        </ul>
+      
+      </div>
+      
+</body>
+</html>
